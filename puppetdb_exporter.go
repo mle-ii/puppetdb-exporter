@@ -690,7 +690,7 @@ func GenerateReportsMetrics(c *puppetdb.Client, nodes bool, debug bool, timeout 
 
 	statusNodesGuage.Reset()
 	for _, entry := range *nodeStatusArr {
-		statusNodesGuage.WithLabelValues(entry.Status, entry.Value, entry.Environment, entry.Certname).Inc()
+		statusNodesGuage.WithLabelValues(entry.Status, entry.Environment, entry.Certname).Set(entry.Value)
 	}
 }
 
